@@ -5,8 +5,8 @@ CREATE TABLE Users (
 	UserSurname		TEXT NOT NULL						,          
 	UserEmail		TEXT NOT NULL						,            
 	UserCreatedOn	TEXT NOT NULL						,
-	Salt			TEXT NULL							,
-	HashCode		TEXT NULL			
+	Salt			TEXT NOT NULL							,
+	HashCode		TEXT NOT NULL			
 	);                                  
 
 
