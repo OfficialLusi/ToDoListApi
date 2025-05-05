@@ -10,8 +10,9 @@ public class Activity
     public DateTime ActivityCreatedOn { get; set; }
     public DateTime? ActivityModifiedOn { get; set; }
 
-    public Activity(Guid activityGuid, string activityTitle, string activityDescription, DateTime activityCreatedOn, DateTime? activityModifiedOn = null)
+    public Activity(int activityId, Guid activityGuid, string activityTitle, string activityDescription, DateTime activityCreatedOn, DateTime? activityModifiedOn = null)
     {
+        ActivityId = ActivityId;
         ActivityGuid = activityGuid;
         ActivityTitle = activityTitle;
         ActivityDescription = activityDescription;

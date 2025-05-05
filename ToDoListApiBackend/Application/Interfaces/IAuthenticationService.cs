@@ -1,8 +1,9 @@
 ﻿using TodoListApi.Dtos;
+using ToDoListApiBackend.Domain;
 
 namespace ToDoListApiBackend.Application.Interfaces;
 
 public interface IAuthenticationService
 {
-    public UserDto AuthenticateUser(UserDto userDto);
+    public User AuthenticateUser(UserDto userDto);
 }

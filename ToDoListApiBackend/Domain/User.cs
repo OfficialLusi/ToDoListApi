@@ -1,7 +1,4 @@
-﻿using LusiUtilsLibrary.Backend.Crypting;
-using ToDoListApiBackend.Application.DTOs;
-
-namespace ToDoListApiBackend.Domain;
+﻿namespace ToDoListApiBackend.Domain;
 
 public class User
 {
@@ -14,9 +11,10 @@ public class User
     public byte[] Salt { get; private set; }
     public byte[] HashCode { get; private set; }
 
-    public User(int userId, Guid userGuid, string userName, string userSurname, string userEmail, DateTime userCreatedOn, byte[] salt, byte[] hashCode)
+
+    // constructor that take the dto from frontend and saves it into db
+    public User(Guid userGuid, string userName, string userSurname, string userEmail, DateTime userCreatedOn, byte[] salt, byte[] hashCode)
     {
-        UserId = userId; // todo, sicuro? è settabile?
         UserGuid = userGuid;
         UserName = userName;
         UserSurname = userSurname;
@@ -26,6 +24,17 @@ public class User
         HashCode = hashCode;
     }
 
-    // todo: implement password change
+    // constructor that take the user from db and send it out
+    public User(int userId, Guid userGuid, string userName, string userSurname, string userEmail, DateTime userCreatedOn, byte[] salt, byte[] hashCode)
+    {
+        UserId = userId;
+        UserGuid = userGuid;
+        UserName = userName;
+        UserSurname = userSurname;
+        UserEmail = userEmail;
+        UserCreatedOn = userCreatedOn;
+        Salt = salt;
+        HashCode = hashCode;
+    }
 
 }

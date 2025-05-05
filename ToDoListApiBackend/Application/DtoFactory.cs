@@ -1,4 +1,5 @@
-﻿using ToDoListApiBackend.Application.DTOs;
+﻿using System;
+using TodoListApi.Dtos;
 using ToDoListApiBackend.Domain;
 
 namespace ToDoListApiBackend.Application;
@@ -9,24 +10,36 @@ namespace ToDoListApiBackend.Application;
 public static class DtoFactory
 {
     #region user
- 
+
     public static UserDto GetUserDto(User user)
     {
-        // todo: what do i need in the frontend/other services? (do i need hash and salt and do the auth in the frontend?)
         return new UserDto(
-            user.GetUserGuid(),
-            user.GetUserName(),
-            user.GetUserSurname(),
-            user.GetUserEmail(),
-            user.GetUserCreationDate()
-        );  
+            user.UserId,
+            user.UserGuid,
+            user.UserName,
+            user.UserSurname,
+            user.UserEmail,
+            user.UserCreatedOn
+        );
     }
-    
+    public static User GetUser(UserDto userDto, byte[] salt, byte[] hashCode)
+    {
+        return new User(
+            userDto.UserGuid,
+            userDto.UserName,
+            userDto.UserSurname,
+            userDto.UserEmail,
+            userDto.UserCreatedOn,
+            salt,
+            hashCode
+        );
+    }
+
     #endregion
 
     #region activity
-    
-    
+
+
     #endregion
 
 }
